@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { fas } from "@fortawesome/free-solid-svg-icons"; // Semua ikon solid
+import { fas } from "@fortawesome/free-solid-svg-icons";
 
 // Tambahin kategori ikon yang lu mau ke library
 library.add(fas);
