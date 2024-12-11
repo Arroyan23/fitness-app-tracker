@@ -1,4 +1,27 @@
+import axios from "axios";
+import { useState } from "react";
+
 export const FormLoginComponent = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // melakukan konfigurasi saat di klik
+  const onClickCheckDatabaseAuth = async (e) => {
+    e.preventDefault();
+    try {
+      const responses = await axios.post(
+        "http://localhost:5000/login-user-generate-token",
+        { email, password }
+      );
+
+      // set ke localstorage
+      localStorage.setItem("token-gym-tracker", responses.data.token);
+      // arahkan ke halaman dashboard
+      window.location.href = "/dashboard";
+    } catch (error) {
+      console.log(`Something when error: ${error}`);
+    }
+  };
   return (
     <>
       <div class="p-2 w-[30rem]">
@@ -14,6 +37,7 @@ export const FormLoginComponent = () => {
               name="username"
               class="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 w-full"
               autocomplete="off"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div class="mb-4 text-black">
@@ -26,6 +50,7 @@ export const FormLoginComponent = () => {
               name="password"
               class="border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500 w-full"
               autocomplete="off"
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div class="mb-4 flex items-cente">
@@ -47,6 +72,7 @@ export const FormLoginComponent = () => {
           <button
             type="submit"
             class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full"
+            onClick={onClickCheckDatabaseAuth}
           >
             Login
           </button>

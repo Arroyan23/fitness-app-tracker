@@ -87,7 +87,7 @@ export const SignUpFormComponent = () => {
           </button>
         </form>
         <div className="mt-6 text-blue-500 text-center">
-          <a href="#" className="hover:underline">
+          <a href="/" className="hover:underline">
             Login Here
           </a>
         </div>

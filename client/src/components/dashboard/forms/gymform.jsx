@@ -1,8 +1,38 @@
 // halaman untuk form gym
 import { motion } from "framer-motion";
+import axios from "axios";
+import { useState } from "react";
+
 export const GymFormAdd = ({ liftCancelForm }) => {
   const handleClickCancel = () => {
     liftCancelForm(false);
+  };
+  // menyimpan inputan ke dalam useState
+  const [exerciseType, setExerciseType] = useState("");
+  const [exerciseDate, setExerciseDate] = useState("");
+  const [exerciseDesc, setExerciseDesc] = useState("");
+  const [caloriesBurn, setCaloriesBurn] = useState("");
+
+  // fungsi untuk menambahkan ke dalam database
+  const onClickSaveGymData = async (e) => {
+    e.preventDefault();
+    try {
+      const responses = await axios.post(
+        "http://localhost:5000/add-priv-data-gym",
+        { exerciseType, exerciseDate, exerciseDesc, caloriesBurn },
+        {
+          headers: {
+            Authorization: localStorage.getItem("token-gym-tracker"),
+          },
+        }
+      );
+      console.log("Berhasil Menambahkan ke dalam database FRONT END");
+
+      alert("Berhasil!");
+      window.location.href = "/dashboard";
+    } catch (error) {
+      console.log(`Something when error : ${error}`);
+    }
   };
   return (
     <>
@@ -17,6 +47,7 @@ export const GymFormAdd = ({ liftCancelForm }) => {
             <input
               type="text"
               className="focus:outline-none border-b-2 border-gray-700 w-full pb-1"
+              onChange={(e) => setExerciseType(e.target.value)}
             />
           </div>
           <div className="mt-4">
@@ -26,6 +57,7 @@ export const GymFormAdd = ({ liftCancelForm }) => {
             <input
               type="date"
               className="focus:outline-none border-b-2 border-gray-700 w-full pb-1"
+              onChange={(e) => setExerciseDate(e.target.value)}
             />
           </div>
           <div className="mt-4">
@@ -35,6 +67,7 @@ export const GymFormAdd = ({ liftCancelForm }) => {
             <input
               type="text"
               className="focus:outline-none border-b-2 border-gray-700 w-full pb-1"
+              onChange={(e) => setExerciseDesc(e.target.value)}
             />
           </div>
           <div className="mt-4">
@@ -44,6 +77,7 @@ export const GymFormAdd = ({ liftCancelForm }) => {
             <input
               type="text"
               className="focus:outline-none border-b-2 border-gray-700 w-full pb-1"
+              onChange={(e) => setCaloriesBurn(e.target.value)}
             />
           </div>
           <div className="flex items-center justify-center space-x-8 mt-6 text-white">
@@ -52,6 +86,7 @@ export const GymFormAdd = ({ liftCancelForm }) => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              onClick={onClickSaveGymData}
             >
               Submit
             </motion.button>

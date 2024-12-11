@@ -12,9 +12,13 @@ app.use(cors());
 
 // import route file
 const signUpApi = require("./routes/signup");
+const loginApi = require("./routes/login");
+const gymData = require("./routes/gym");
 
 // gunakan routes
 app.use("/", signUpApi);
+app.use("/", loginApi);
+app.use("/", gymData);
 
 const port = 5000;
 app.listen(port, () => {
