@@ -46,4 +46,15 @@ router.post("/login-user-generate-token", async (req, res) => {
   }
 });
 
+// mendapatkan nama user
+router.get("/get-user-username", async (req, res) => {
+  const token = req.header("Authorization");
+  const decoded = jwt.verify(token, "IaslPSkd129423");
+  const objectId = decoded.id;
+
+  const findUserByID = await userData.findById(objectId);
+
+  res.json(findUserByID);
+});
+
 module.exports = router;

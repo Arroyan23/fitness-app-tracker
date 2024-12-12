@@ -1,5 +1,11 @@
 // halaman untuk menginformasikan halaman detail dari inputnya
-export const DetailInformation = ({ liftDetailSet }) => {
+export const DetailInformation = ({
+  liftDetailSet,
+  exerciseType,
+  gymDate,
+  gymDesc,
+  burningGym,
+}) => {
   const handleCloseDetail = () => {
     liftDetailSet(false);
   };
@@ -14,10 +20,18 @@ export const DetailInformation = ({ liftDetailSet }) => {
           <hr className="border-t-2 border-gray-600 mt-2 w-48" />
           {/* masukkan data data dari database yang ada di gym di ambil detailnya */}
           <div className="mt-4 font-semibold">
-            <p>1. Tipe Latihan: </p>
-            <p>2. Tanggal Latihan: </p>
-            <p>3. Deskripsi Latihan: </p>
-            <p>4. Calories Burn: </p>
+            <p>
+              1. Tipe Latihan: <br /> {exerciseType}
+            </p>
+            <p>
+              2. Tanggal Latihan: <br /> {gymDate}
+            </p>
+            <p>
+              3. Deskripsi Latihan: <br /> {gymDesc}
+            </p>
+            <p>
+              4. Calories Burn: <br /> {burningGym}
+            </p>
           </div>
           <button
             className="bg-sky-400 absolute bottom-5 w-full py-2 font-semibold text-white

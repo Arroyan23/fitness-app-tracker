@@ -6,11 +6,11 @@ const userGymUnique = mongoose.model("gymex", {
     type: String,
     require: true,
   },
-  excerciseDate: {
+  exerciseDate: {
     type: String,
     require: true,
   },
-  excerciseDesc: {
+  exerciseDesc: {
     type: String,
     require: true,
   },

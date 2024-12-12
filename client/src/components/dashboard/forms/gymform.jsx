@@ -57,6 +57,7 @@ export const GymFormAdd = ({ liftCancelForm }) => {
             <input
               type="date"
               className="focus:outline-none border-b-2 border-gray-700 w-full pb-1"
+              value={exerciseDate}
               onChange={(e) => setExerciseDate(e.target.value)}
             />
           </div>

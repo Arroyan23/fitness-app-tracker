@@ -33,5 +33,15 @@ router.post("/add-priv-data-gym", async (req, res) => {
 });
 
 // untuk mendapatkan data unique nya
+router.get("/get-priv-data", async (req, res) => {
+  const token = req.header("Authorization");
+  const decoded = jwt.verify(token, "IaslPSkd129423");
+  const objectId = decoded.id;
+
+  const findDataById = await userGymUnique.find({ profile: objectId });
+
+  // kirimkan ke front end
+  res.json(findDataById);
+});
 
 module.exports = router;
