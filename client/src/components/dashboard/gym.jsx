@@ -41,6 +41,7 @@ export const GymData = () => {
               dateExer={e.exerciseDate}
               descExer={e.exerciseDesc}
               burnExer={e.caloriesBurn}
+              uniqueId={e._id}
             />
           ))}
         </div>

@@ -45,3 +45,17 @@ router.get("/get-priv-data", async (req, res) => {
 });
 
 module.exports = router;
+
+// fungsi untuk menghapus data berdasarkan id yang di temukan
+router.delete("/delete-id/:id", async (req, res) => {
+  // mengambil id berdasarkan params
+  try {
+    const id = req.params.id;
+    const deleteData = await userGymUnique.findByIdAndDelete(id);
+    res
+      .status(200)
+      .json({ message: "Berhasil menghapus data dengan konfigurasi back end" });
+  } catch (error) {
+    console.log(`Ada yang salah pada konfirmasi ke dalam back end: \n${error}`);
+  }
+});

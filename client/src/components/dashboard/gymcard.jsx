@@ -8,6 +8,7 @@ export const GymCard = ({
   dateExer,
   descExer,
   burnExer,
+  uniqueId,
 }) => {
   const [detailInformation, setDetailInformation] = useState(false);
   const [type, setType] = useState();
@@ -41,6 +42,7 @@ export const GymCard = ({
           gymDate={dateExer}
           gymDesc={descExer}
           burningGym={burnExer}
+          objectIdUnique={uniqueId}
         />
       )}
     </>
