@@ -24,9 +24,10 @@ export const GymData = () => {
         console.log(`Something when error : ${error}`);
       }
     };
-
+    // panggil fungsi tiap kali di refresh
     fetchInfoApi();
   }, []);
+
   return (
     <>
       <div className="h-96 w-[45rem] bg-white rounded-lg border-2 mt-10 py-2 px-4 shadow-xl">

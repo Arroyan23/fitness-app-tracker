@@ -1,6 +1,7 @@
 // halaman untuk menginformasikan halaman detail dari inputnya
 import axios from "axios";
 export const DetailInformation = ({
+  runOrGym,
   liftDetailSet,
   exerciseType,
   gymDate,
@@ -30,7 +31,7 @@ export const DetailInformation = ({
         {/* bisa dipakai untuk informasi gym bisa untuk informasi yang running */}
         <div className="h-full w-full px-4 py-3 relative">
           <h1 className="text-xl font-semibold">
-            Informasi Gym (Masukkan Sesuai Dengan kategorinya)
+            Informasi {runOrGym} (Masukkan Sesuai Dengan kategorinya)
           </h1>
           <hr className="border-t-2 border-gray-600 mt-2 w-48" />
           {/* masukkan data data dari database yang ada di gym di ambil detailnya */}

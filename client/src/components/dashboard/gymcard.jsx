@@ -43,6 +43,7 @@ export const GymCard = ({
           gymDesc={descExer}
           burningGym={burnExer}
           objectIdUnique={uniqueId}
+          runOrGym="Gym"
         />
       )}
     </>

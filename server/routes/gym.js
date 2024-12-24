@@ -44,8 +44,6 @@ router.get("/get-priv-data", async (req, res) => {
   res.json(findDataById);
 });
 
-module.exports = router;
-
 // fungsi untuk menghapus data berdasarkan id yang di temukan
 router.delete("/delete-id/:id", async (req, res) => {
   // mengambil id berdasarkan params
@@ -59,3 +57,5 @@ router.delete("/delete-id/:id", async (req, res) => {
     console.log(`Ada yang salah pada konfirmasi ke dalam back end: \n${error}`);
   }
 });
+
+module.exports = router;

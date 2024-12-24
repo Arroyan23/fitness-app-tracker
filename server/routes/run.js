@@ -36,13 +36,16 @@ router.post("/add-run-data", async (req, res) => {
 });
 
 // membuat fungsi untuk membaca data
-router.get("/get-private-run-data", (req, res) => {
+router.get("/get-private-run-data", async (req, res) => {
   // dapatkan berdasarkan token dengan object id nya
   const token = req.header("Authorization");
   const decoded = jwt.verify(token, "IaslPSkd129423");
   const getObjectId = decoded.id;
+  // temukan data nya berdasarkan object id
+  const findDataByObjectId = await modelRunData.find({ profile: getObjectId });
 
-  
+  //kirimkan ke front end
+  res.json(findDataByObjectId);
 });
 
 module.exports = router;
